@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "${id}",
+	"version": "${version}",
+	"name": "${name}",
+	"description": "A template for Iris compatibility add-ons built on the Exit library.",
+	"authors": [],
+	"license": "CC0-1.0",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"ml.mypals.ShaderExit.ShaderExit"
+		]
+	},
+	"mixins": [
+		"ShaderExit.mixins.json"
+	],
+	"depends": {
+		"fabricloader": "*",
+		"minecraft": "${minecraft}",
+		"java": ">=${java}",
+		"fabric-api": "*",
+		"emergency_exit": "*"
+	},
+	"suggests": {
+		"iris": "*"
+	}
+}

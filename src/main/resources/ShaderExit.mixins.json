@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "ml.mypals.ShaderExit.mixin",
+  "compatibilityLevel": "${java}",
+  "client": [
+    "RenderEventHandlerMixin",
+    "TweakerMoreRenderEventsMixin",
+    "CUIListenerWorldRenderMixin",
+    "VanillaDebugRenderersMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
