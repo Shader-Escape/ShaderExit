@@ -51,7 +51,8 @@ dependencies {
     mod("implementation")("com.github.Shader-Escape.emergency-exit:emergency_exit-fabric:${property("deps.exit")}")
 
     mod("implementation")("maven.modrinth:malilib:${property("deps.malilib")}")
-    mod("compileOnly")("maven.modrinth:tweakermore:${property("deps.tweakermore")}")
+    mod("implementation")("maven.modrinth:tweakeroo:${property("deps.tweakeroo")}")
+    mod("implementation")("maven.modrinth:tweakermore:${property("deps.tweakermore")}")
     mod("implementation")("maven.modrinth:minihud:${property("deps.minihud")}")
     mod("implementation")("maven.modrinth:worldedit-cui:${property("deps.worldeditcui")}")
 
