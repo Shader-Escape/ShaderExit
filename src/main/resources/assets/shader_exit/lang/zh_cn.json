@@ -15,6 +15,7 @@
   "shader_exit.mod.tweakeroo": "通过 MaLiLib 绘制的放置辅助等世界覆盖层，不影响模组的其他功能。",
   "shader_exit.mod.litematica": "通过 MaLiLib 绘制的选区框等世界覆盖层，不包含投影方块渲染。",
   "shader_exit.mod.tweakermore": "TweakerMore 绘制的世界覆盖层，不影响其他调整功能。",
+  "shader_exit.mod.masa_gadget_mod": "村民床与工作站追踪，以及补货时间、转化倒计时等实体悬浮信息。支持至 Minecraft 26.2。",
   "shader_exit.mod.worldeditcui": "WorldEdit 选区线框和网格。",
   "shader_exit.mod.malilib": "其他通过 MaLiLib 绘制的世界覆盖层；已单独列出的模组由各自的开关控制。",
   "shader_exit.mod.minecraft": "区块边界等原版调试图形与 Gizmo，不影响正常的世界渲染。",

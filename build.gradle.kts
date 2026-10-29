@@ -1,6 +1,9 @@
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
 
 val obfuscated = stonecutter.eval(stonecutter.current.version, "<=1.21.11")
+val masaGadgetSupported = stonecutter.eval(stonecutter.current.version, "<=26.2")
+val masaGadgetLineFix = stonecutter.eval(stonecutter.current.version, ">=1.21.11 <=26.2")
+val magicLibTextBatch = stonecutter.eval(stonecutter.current.version, "=26.2")
 
 apply(plugin = if (obfuscated) "net.fabricmc.fabric-loom-remap" else "net.fabricmc.fabric-loom")
 apply(plugin = "maven-publish")
@@ -92,7 +95,18 @@ tasks {
 
         val mixinJava = "JAVA_${requiredJava.majorVersion}"
         inputs.property("mixinJava", mixinJava)
+        val excludedMixins = buildList {
+            if (!masaGadgetSupported) add("\"MasaGadgetRenderersMixin\"")
+            if (!masaGadgetLineFix) add("\"MasaGadgetRenderUtilMixin\"")
+            if (!magicLibTextBatch) add("\"MagicLibImmediateTextDrawerMixin\"")
+        }
+        inputs.property("excludedMixins", excludedMixins)
         filesMatching("*.mixins.json") { expand("java" to mixinJava) }
+        filesMatching("ShaderExit.mixins.json") {
+            filter { line: String ->
+                if (excludedMixins.any { line.contains(it) }) "" else line
+            }
+        }
     }
 
     named<Jar>("jar") {

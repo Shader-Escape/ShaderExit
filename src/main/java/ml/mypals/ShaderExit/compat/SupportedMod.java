@@ -10,6 +10,9 @@ public enum SupportedMod {
 	TWEAKEROO("tweakeroo", "Tweakeroo", "TW", 0xFFE4AD61, "fi.dy.masa.tweakeroo."),
 	LITEMATICA("litematica", "Litematica", "LM", 0xFF79B9EA, "fi.dy.masa.litematica."),
 	TWEAKERMORE("tweakermore", "TweakerMore", "TM", 0xFFBD9BE8, "me.fallenbreath.tweakermore."),
+	//? if <=26.2 {
+	/*MASAGADGET("masa_gadget_mod", "MasaGadget", "MG", 0xFF7DADD9, "com.plusls.MasaGadget."),
+	*///?}
 	WORLDEDIT_CUI("worldeditcui", "WorldEdit CUI", "WE", 0xFFEBBC5D, "org.enginehub.worldeditcui."),
 	CARPET("carpet", "Carpet", "CP", 0xFFD77870, "carpet."),
 	MALILIB("malilib", "MaLiLib", "ML", 0xFF9CC68A, "fi.dy.masa.malilib."),

@@ -16,12 +16,17 @@ ShaderExit 帮助其他模组的世界覆盖层逃离由 Iris 加载的光影包
 | Tweakeroo | 通过 MaLiLib 世界渲染回调绘制的覆盖层 |
 | Litematica | 仅 MaLiLib 世界覆盖层回调；**不包含投影区块／原理图地形渲染** |
 | TweakerMore | `TweakerMoreRenderEvents` 分发的世界渲染 |
+| MasaGadget（至 26.2） | 村民床与工作站追踪，以及补货时间、僵尸村民转化倒计时等实体悬浮信息 |
 | WorldEdit CUI | 选区线框、网格等世界渲染 |
 | Carpet | 共用的形状渲染器，包括 scarpet 图形、TIS 微时序标记；共用一个绕过开关 |
 | MaLiLib | 上面没有单独识别的其他 MaLiLib 世界渲染器 |
 | Minecraft 原版 | 世界调试渲染器和 Gizmo 图形 |
 
 **Carpet** 这一项同时支持 Carpet 本体和 Carpet TIS Addition。两者的图形共用 Carpet 的渲染器与网络协议，客户端无法可靠区分图形来源，因此合并为一个开关。
+
+MasaGadget 在项目支持的 **26.2 及以下** Minecraft 版本中提供独立开关。MagicLib 是 MasaGadget 本身需要的依赖；26.3 构建不提供 MasaGadget 接入。
+
+在 1.21.11–26.2 中，开启 MasaGadget 绕过时也会补全 MasaGadget 4.0.403 遗漏的追踪连线提交；悬浮文字单独绘制，不会混入其他 MagicLib 模组的文字批次。
 
 MaLiLib 这一项只管剩下的渲染器，不会覆盖 MiniHUD、Tweakeroo、Litematica 各自的开关。这里只接管表中列出的世界渲染回调，模组的菜单和 HUD 照常工作。
 
@@ -43,7 +48,7 @@ MaLiLib 这一项只管剩下的渲染器，不会覆盖 MiniHUD、Tweakeroo、L
 
 界面列出每个模组的图标、安装状态和绕过开关。已安装的模组用亮色，未安装的用暗色，未安装的项目不能操作。图标从已安装的模组中读取，没有图标时用缩写代替。列表放不下时，用滚轮或底部按钮翻页。
 
-所有开关默认**开启**。关闭某一项后，该模组恢复原来的渲染方式，内容仍然会画。修改后立即保存并生效，不用重启。把鼠标放在开关上，可以查看这一项具体管哪些内容。
+所有开关默认**开启**。关闭某一项后，该模组恢复原来的渲染方式，内容仍然会画。修改后立即保存并生效，不用重启。每一项下方会说明具体管哪些内容，把鼠标放在开关上还可以查看详细提示。界面随游戏语言切换，提供英文和简体中文翻译。
 
 设置保存在 `config/shader_exit.json`：
 
@@ -54,6 +59,7 @@ MaLiLib 这一项只管剩下的渲染器，不会覆盖 MiniHUD、Tweakeroo、L
     "tweakeroo": false,
     "litematica": true,
     "tweakermore": true,
+    "masa_gadget_mod": true,
     "worldeditcui": true,
     "carpet": true,
     "malilib": true,

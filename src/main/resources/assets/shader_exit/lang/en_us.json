@@ -15,6 +15,7 @@
   "shader_exit.mod.tweakeroo": "World overlays drawn through MaLiLib, such as placement guides. Does not affect the mod's other features.",
   "shader_exit.mod.litematica": "Selection boxes and other world overlays drawn through MaLiLib. Does not affect schematic blocks.",
   "shader_exit.mod.tweakermore": "World overlays drawn by TweakerMore. Does not affect its other tweaks.",
+  "shader_exit.mod.masa_gadget_mod": "Villager home/job-site tracers and floating entity information, such as restock and conversion timers. Supported through Minecraft 26.2.",
   "shader_exit.mod.worldeditcui": "WorldEdit selection outlines and grids.",
   "shader_exit.mod.malilib": "Other world overlays drawn through MaLiLib. Mods listed separately follow their own switches.",
   "shader_exit.mod.minecraft": "Vanilla debug shapes and gizmos, such as chunk borders. Does not affect normal world rendering.",
