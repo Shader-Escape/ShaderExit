@@ -6,7 +6,7 @@
 
 ShaderExit 帮助其他模组的世界覆盖层逃离由 Iris 加载的光影包。它使用 [Emergency Exit（应急出口）](https://github.com/Shader-Escape/emergency-exit)，把覆盖层单独画出来，再在光影包完成这一帧之后合回画面。
 
-每个支持的模组都有自己的开关。比如，你可以让 MiniHUD 的形状绕过光影包，同时让 WorldEdit CUI 的选区保持原来的渲染方式。
+你可以按模组开关光影绕过。比如，你可以让 MiniHUD 的形状绕过光影包，同时让 WorldEdit CUI 的选区保持原来的渲染方式。
 
 ## 支持的模组
 
@@ -17,8 +17,11 @@ ShaderExit 帮助其他模组的世界覆盖层逃离由 Iris 加载的光影包
 | Litematica | 仅 MaLiLib 世界覆盖层回调；**不包含投影区块／原理图地形渲染** |
 | TweakerMore | `TweakerMoreRenderEvents` 分发的世界渲染 |
 | WorldEdit CUI | 选区线框、网格等世界渲染 |
+| Carpet | 共用的形状渲染器，包括 scarpet 图形、TIS 微时序标记；共用一个绕过开关 |
 | MaLiLib | 上面没有单独识别的其他 MaLiLib 世界渲染器 |
 | Minecraft 原版 | 世界调试渲染器和 Gizmo 图形 |
+
+**Carpet** 这一项同时支持 Carpet 本体和 Carpet TIS Addition。两者的图形共用 Carpet 的渲染器与网络协议，客户端无法可靠区分图形来源，因此合并为一个开关。
 
 MaLiLib 这一项只管剩下的渲染器，不会覆盖 MiniHUD、Tweakeroo、Litematica 各自的开关。这里只接管表中列出的世界渲染回调，模组的菜单和 HUD 照常工作。
 
@@ -52,6 +55,7 @@ MaLiLib 这一项只管剩下的渲染器，不会覆盖 MiniHUD、Tweakeroo、L
     "litematica": true,
     "tweakermore": true,
     "worldeditcui": true,
+    "carpet": true,
     "malilib": true,
     "minecraft": true
   }

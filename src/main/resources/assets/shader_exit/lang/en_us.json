@@ -17,5 +17,6 @@
   "shader_exit.mod.tweakermore": "World rendering dispatched by TweakerMore.",
   "shader_exit.mod.worldeditcui": "WorldEdit selection outlines and grids.",
   "shader_exit.mod.malilib": "Other MaLiLib world renderers. Does not override the individual choices above.",
-  "shader_exit.mod.minecraft": "Vanilla world debug renderers and gizmos."
+  "shader_exit.mod.minecraft": "Vanilla world debug renderers and gizmos.",
+  "shader_exit.mod.carpet": "Shape rendering for both Carpet itself and Carpet TIS Addition, including scarpet shapes and micro-timing markers."
 }

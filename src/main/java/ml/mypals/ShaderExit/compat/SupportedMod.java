@@ -11,6 +11,7 @@ public enum SupportedMod {
 	LITEMATICA("litematica", "Litematica", "LM", 0xFF79B9EA, "fi.dy.masa.litematica."),
 	TWEAKERMORE("tweakermore", "TweakerMore", "TM", 0xFFBD9BE8, "me.fallenbreath.tweakermore."),
 	WORLDEDIT_CUI("worldeditcui", "WorldEdit CUI", "WE", 0xFFEBBC5D, "org.enginehub.worldeditcui."),
+	CARPET("carpet", "Carpet", "CP", 0xFFD77870, "carpet."),
 	MALILIB("malilib", "MaLiLib", "ML", 0xFF9CC68A, "fi.dy.masa.malilib."),
 	MINECRAFT("minecraft", "Minecraft", "MC", 0xFF8BBC76, "net.minecraft.");
 

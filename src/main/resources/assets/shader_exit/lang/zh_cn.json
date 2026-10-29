@@ -17,5 +17,6 @@
   "shader_exit.mod.tweakermore": "由 TweakerMore 分发的世界渲染。",
   "shader_exit.mod.worldeditcui": "WorldEdit 选区线框和网格。",
   "shader_exit.mod.malilib": "其他 MaLiLib 世界渲染器，不影响上方各模组的独立开关。",
-  "shader_exit.mod.minecraft": "原版世界调试渲染与 Gizmo 图形。"
+  "shader_exit.mod.minecraft": "原版世界调试渲染与 Gizmo 图形。",
+  "shader_exit.mod.carpet": "同时支持 Carpet 本体与 Carpet TIS Addition 的形状渲染，包括 scarpet 图形和微时序标记。"
 }

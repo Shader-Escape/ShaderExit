@@ -54,6 +54,9 @@ dependencies {
     mod("compileOnly")("maven.modrinth:tweakermore:${property("deps.tweakermore")}")
     mod("compileOnly")("maven.modrinth:modmenu:${property("deps.modmenu")}")
     mod("localRuntime")("maven.modrinth:modmenu:${property("deps.modmenu")}")
+    mod("compileOnly")("maven.modrinth:carpet:${property("deps.carpet")}")
+    mod("localRuntime")("maven.modrinth:carpet:${property("deps.carpet")}")
+    mod("localRuntime")("maven.modrinth:carpet-tis-addition:${property("deps.carpet_tis_addition")}")
     mod("implementation")("maven.modrinth:minihud:${property("deps.minihud")}")
     mod("implementation")("maven.modrinth:worldedit-cui:${property("deps.worldeditcui")}")
 

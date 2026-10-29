@@ -6,7 +6,9 @@
     "RenderEventHandlerMixin",
     "TweakerMoreRenderEventsMixin",
     "CUIListenerWorldRenderMixin",
-    "VanillaDebugRenderersMixin"
+    "VanillaDebugRenderersMixin",
+    "CarpetShapesRendererMixin",
+    "CarpetSpriteRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

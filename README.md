@@ -6,7 +6,7 @@
 
 ShaderExit lets other mods' world overlays escape shader packs loaded by Iris. It uses [Emergency Exit](https://github.com/Shader-Escape/emergency-exit) to draw those overlays separately and merge them back after the shader pack finishes the frame.
 
-Each supported mod has its own switch. You can keep MiniHUD's shapes out of the shader pack while leaving WorldEdit CUI's selection rendering as it was, for example.
+You can choose which mods bypass the shader pack. You can keep MiniHUD's shapes out of the shader pack while leaving WorldEdit CUI's selection rendering as it was, for example.
 
 ## Supported mods
 
@@ -17,8 +17,11 @@ Each supported mod has its own switch. You can keep MiniHUD's shapes out of the 
 | Litematica | MaLiLib world-overlay callbacks only; **schematic terrain rendering is not covered** |
 | TweakerMore | World rendering dispatched by `TweakerMoreRenderEvents` |
 | WorldEdit CUI | Selection outlines, grids and other world rendering |
+| Carpet | Shared shape renderer, including scarpet shapes and TIS micro-timing markers; one shared switch |
 | MaLiLib | Other MaLiLib world renderers that are not identified above |
 | Minecraft | Vanilla world debug renderers and gizmos |
+
+The **Carpet** entry covers both Carpet itself and Carpet TIS Addition. They share Carpet's shape renderer and network protocol. Their shapes cannot reliably be attributed to separate mods on the client, so they use one shared switch.
 
 The MaLiLib switch is for the remaining renderers. It does not override MiniHUD, Tweakeroo or Litematica's own switches. Only the world-render callbacks listed here are covered; a supported mod's menus and HUD are left alone.
 
@@ -52,6 +55,7 @@ Settings are saved to `config/shader_exit.json`:
     "litematica": true,
     "tweakermore": true,
     "worldeditcui": true,
+    "carpet": true,
     "malilib": true,
     "minecraft": true
   }

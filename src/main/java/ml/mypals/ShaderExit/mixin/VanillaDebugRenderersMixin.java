@@ -28,7 +28,7 @@ public abstract class VanillaDebugRenderersMixin {
 		boolean onTop,
 		Operation<Void> original
 	) {
-		original.call(primitives, SupportedMod.MINECRAFT.enabled() ? Exit.batch(collector) : collector, cameraState, onTop);
+		original.call(primitives, Bypass.currentModOr(SupportedMod.MINECRAFT).enabled() ? Exit.batch(collector) : collector, cameraState, onTop);
 	}
 	//?} else if >=1.21.11 {
 	/*@WrapMethod(method = "render")
@@ -37,13 +37,14 @@ public abstract class VanillaDebugRenderersMixin {
 		net.minecraft.client.renderer.MultiBufferSource bufferSource,
 		//? if >=26.1.2 {
 		net.minecraft.client.renderer.state.level.CameraRenderState cameraState,
+		org.joml.Matrix4fc modelView,
 		//?} else {
 		net.minecraft.client.renderer.state.CameraRenderState cameraState,
-		//?}
 		org.joml.Matrix4f modelView,
+		//?}
 		Operation<Void> original
 	) {
-		Bypass.render(SupportedMod.MINECRAFT, () -> original.call(poseStack, bufferSource, cameraState, modelView));
+		Bypass.render(Bypass.currentModOr(SupportedMod.MINECRAFT), () -> original.call(poseStack, bufferSource, cameraState, modelView));
 	}
 	*///?} else if >=1.21.10 {
 	/*@WrapMethod(method = "render")
@@ -57,7 +58,7 @@ public abstract class VanillaDebugRenderersMixin {
 		boolean clearBuffers,
 		Operation<Void> original
 	) {
-		Bypass.render(SupportedMod.MINECRAFT, () -> original.call(poseStack, frustum, bufferSource, camX, camY, camZ, clearBuffers));
+		Bypass.render(Bypass.currentModOr(SupportedMod.MINECRAFT), () -> original.call(poseStack, frustum, bufferSource, camX, camY, camZ, clearBuffers));
 	}
 	*///?} else if >=1.21.3 {
 	/*@WrapMethod(method = "render")
@@ -70,7 +71,7 @@ public abstract class VanillaDebugRenderersMixin {
 		double camZ,
 		Operation<Void> original
 	) {
-		Bypass.render(SupportedMod.MINECRAFT, () -> original.call(poseStack, frustum, bufferSource, camX, camY, camZ));
+		Bypass.render(Bypass.currentModOr(SupportedMod.MINECRAFT), () -> original.call(poseStack, frustum, bufferSource, camX, camY, camZ));
 	}
 	*///?} else {
 	/*@WrapMethod(method = "render")
@@ -82,7 +83,7 @@ public abstract class VanillaDebugRenderersMixin {
 		double camZ,
 		Operation<Void> original
 	) {
-		Bypass.render(SupportedMod.MINECRAFT, () -> original.call(poseStack, bufferSource, camX, camY, camZ));
+		Bypass.render(Bypass.currentModOr(SupportedMod.MINECRAFT), () -> original.call(poseStack, bufferSource, camX, camY, camZ));
 	}
 	*///?}
 }
