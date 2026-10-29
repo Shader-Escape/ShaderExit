@@ -1,0 +1,21 @@
+{
+  "shader_exit.screen.title": "ShaderExit · 光影绕过",
+  "shader_exit.screen.subtitle": "按模组选择是否绕过光影包",
+  "shader_exit.screen.enabled": "绕过：开",
+  "shader_exit.screen.disabled": "绕过：关",
+  "shader_exit.screen.installed": "已安装",
+  "shader_exit.screen.not_installed": "未安装",
+  "shader_exit.screen.toggle_hint": "修改后立即保存并生效。关闭时恢复该模组原本的渲染。",
+  "shader_exit.screen.saved_hint": "修改后立即生效，自动保存。",
+  "shader_exit.screen.save_failed": "保存失败，请查看日志；本次修改未生效。",
+  "shader_exit.screen.previous": "上一页",
+  "shader_exit.screen.next": "下一页",
+  "shader_exit.screen.page": "第 %s / %s 页 · 滚轮翻页",
+  "shader_exit.mod.minihud": "通过 MaLiLib 绘制的世界覆盖层，例如形状和边界。",
+  "shader_exit.mod.tweakeroo": "通过 MaLiLib 绘制的世界覆盖层。",
+  "shader_exit.mod.litematica": "仅支持 MaLiLib 世界覆盖层回调，不包含投影地形渲染。",
+  "shader_exit.mod.tweakermore": "由 TweakerMore 分发的世界渲染。",
+  "shader_exit.mod.worldeditcui": "WorldEdit 选区线框和网格。",
+  "shader_exit.mod.malilib": "其他 MaLiLib 世界渲染器，不影响上方各模组的独立开关。",
+  "shader_exit.mod.minecraft": "原版世界调试渲染与 Gizmo 图形。"
+}

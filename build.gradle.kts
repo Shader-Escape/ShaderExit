@@ -52,6 +52,8 @@ dependencies {
 
     mod("implementation")("maven.modrinth:malilib:${property("deps.malilib")}")
     mod("compileOnly")("maven.modrinth:tweakermore:${property("deps.tweakermore")}")
+    mod("compileOnly")("maven.modrinth:modmenu:${property("deps.modmenu")}")
+    mod("localRuntime")("maven.modrinth:modmenu:${property("deps.modmenu")}")
     mod("implementation")("maven.modrinth:minihud:${property("deps.minihud")}")
     mod("implementation")("maven.modrinth:worldedit-cui:${property("deps.worldeditcui")}")
 

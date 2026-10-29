@@ -3,6 +3,8 @@ package ml.mypals.ShaderExit.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import ml.mypals.exit.api.Exit;
+import ml.mypals.ShaderExit.compat.Bypass;
+import ml.mypals.ShaderExit.compat.SupportedMod;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 
@@ -17,12 +19,12 @@ public abstract class CUIListenerWorldRenderMixin {
 		com.mojang.blaze3d.vertex.PoseStack poseStack,
 		Operation<Void> original
 	) {
-		original.call(partialTicks, Exit.batch(collector), poseStack);
+		original.call(partialTicks, SupportedMod.WORLDEDIT_CUI.enabled() ? Exit.batch(collector) : collector, poseStack);
 	}
 	//?} else {
 	/*@WrapMethod(method = "onRender")
 	private void shaderExit$bypassShaderPack(float partialTicks, Operation<Void> original) {
-		Exit.portal(() -> original.call(partialTicks));
+		Bypass.render(SupportedMod.WORLDEDIT_CUI, () -> original.call(partialTicks));
 	}
 	*///?}
 }

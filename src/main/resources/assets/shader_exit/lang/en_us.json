@@ -1,0 +1,21 @@
+{
+  "shader_exit.screen.title": "ShaderExit",
+  "shader_exit.screen.subtitle": "Choose which mods bypass the shader pack",
+  "shader_exit.screen.enabled": "Bypass: ON",
+  "shader_exit.screen.disabled": "Bypass: OFF",
+  "shader_exit.screen.installed": "Installed",
+  "shader_exit.screen.not_installed": "Not installed",
+  "shader_exit.screen.toggle_hint": "Changes are saved immediately. OFF keeps the mod's original rendering.",
+  "shader_exit.screen.saved_hint": "Changes apply immediately and are saved automatically.",
+  "shader_exit.screen.save_failed": "Could not save settings. Check the log; the change was not applied.",
+  "shader_exit.screen.previous": "Previous page",
+  "shader_exit.screen.next": "Next page",
+  "shader_exit.screen.page": "Page %s / %s · Scroll to change page",
+  "shader_exit.mod.minihud": "World overlays rendered through MaLiLib, such as shapes and boundaries.",
+  "shader_exit.mod.tweakeroo": "World overlays rendered through MaLiLib.",
+  "shader_exit.mod.litematica": "MaLiLib world overlay callbacks only. Schematic terrain rendering is not covered.",
+  "shader_exit.mod.tweakermore": "World rendering dispatched by TweakerMore.",
+  "shader_exit.mod.worldeditcui": "WorldEdit selection outlines and grids.",
+  "shader_exit.mod.malilib": "Other MaLiLib world renderers. Does not override the individual choices above.",
+  "shader_exit.mod.minecraft": "Vanilla world debug renderers and gizmos."
+}
