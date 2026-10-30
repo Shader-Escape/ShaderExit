@@ -117,7 +117,6 @@ public final class BypassScreen extends Screen {
 		//?} else {
 		/*super.renderBackground(graphics, mouseX, mouseY, delta);
 		*///?}
-		graphics.fill(this.left - 4, 8, this.left + this.listWidth + 4, this.height - 36, 0xC0101823);
 		this.centered(graphics, this.title, this.width / 2, 17, 0xFFFFFFFF);
 		this.centered(graphics, Component.translatable("shader_exit.screen.subtitle"), this.width / 2, 34, 0xFFB8C9DB);
 		SupportedMod[] mods = SupportedMod.values();
@@ -127,8 +126,11 @@ public final class BypassScreen extends Screen {
 			SupportedMod mod = mods[index];
 			int y = 56 + row * this.rowHeight;
 			boolean installed = mod.installed();
-			graphics.fill(this.left, y, this.left + this.listWidth, y + this.rowHeight - 4, installed ? 0xD0273646 : 0x90202932);
-			graphics.fill(this.left, y, this.left + 2, y + this.rowHeight - 4, installed ? mod.color() : 0xFF434B55);
+			boolean hovered = mouseX >= this.left && mouseX < this.left + this.listWidth
+				&& mouseY >= y && mouseY < y + this.rowHeight - 4;
+			// Keep the world visible behind the list, with a subtle highlight for the hovered row.
+			graphics.fill(this.left, y, this.left + this.listWidth, y + this.rowHeight - 4,
+				hovered ? 0x50303030 : installed ? 0x30000000 : 0x18000000);
 			int iconY = y + (this.rowHeight - 36) / 2;
 			var icon = this.icons.get(mod);
 			if (icon != null) {
