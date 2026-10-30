@@ -39,6 +39,9 @@ public final class BypassConfig {
 					JsonElement value = entry.getValue();
 					if (value.isJsonPrimitive() && value.getAsJsonPrimitive().isBoolean()) {
 						loaded.put(entry.getKey(), value.getAsBoolean());
+					} else {
+						LOGGER.warn("Ignoring non-boolean bypass setting '{}' in {}; expected true or false",
+							entry.getKey(), this.path);
 					}
 				}
 			}
