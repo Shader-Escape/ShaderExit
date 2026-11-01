@@ -24,6 +24,8 @@ ShaderExit 帮助其他模组的世界覆盖层逃离由 Iris 加载的光影包
 
 **Carpet** 这一项同时支持 Carpet 本体和 Carpet TIS Addition。两者的图形共用 Carpet 的渲染器与网络协议，客户端无法可靠区分图形来源，因此合并为一个开关。
 
+开启 Carpet 绕过时，还会修复 Carpet `26.2+v260616`、`26.3+v260915` 的标签未提交绘制和 sprite 相机变换问题。关闭绕过则保留 Carpet 原有行为；其他 Carpet 构建不应用这两项补丁。
+
 MasaGadget 在项目支持的 **26.2 及以下** Minecraft 版本中提供独立开关。MagicLib 是 MasaGadget 本身需要的依赖；26.3 构建不提供 MasaGadget 接入。
 
 在 1.21.11–26.2 中，开启 MasaGadget 绕过时也会补全 MasaGadget 4.0.403 遗漏的追踪连线提交；悬浮文字单独绘制，不会混入其他 MagicLib 模组的文字批次。

@@ -24,6 +24,8 @@ You can choose which mods bypass the shader pack. You can keep MiniHUD's shapes 
 
 The **Carpet** entry covers both Carpet itself and Carpet TIS Addition. They share Carpet's shape renderer and network protocol. Their shapes cannot reliably be attributed to separate mods on the client, so they use one shared switch.
 
+With Carpet bypass enabled, ShaderExit also restores missing label submissions and corrects sprite camera transforms in Carpet `26.2+v260616` and `26.3+v260915`. Disabling bypass preserves Carpet's original behavior. These workarounds do not apply to other Carpet builds.
+
 MasaGadget has its own switch on the supported Minecraft versions up to **26.2**. Its MagicLib dependency is required by MasaGadget itself. The 26.3 build does not offer MasaGadget integration.
 
 On 1.21.11–26.2, enabling the MasaGadget bypass also completes tracer-line submission that MasaGadget 4.0.403 leaves unfinished. Its floating text is kept separate from other MagicLib clients' text batches.
