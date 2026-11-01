@@ -3,14 +3,15 @@
 	"id": "${id}",
 	"version": "${version}",
 	"name": "${name}",
-	"description": "A template for Iris compatibility add-ons built on the Exit library.",
+	"description": "Per-mod shader pack bypass for world overlays, powered by Emergency Exit.",
 	"authors": [],
 	"license": "CC0-1.0",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
 			"ml.mypals.ShaderExit.ShaderExit"
-		]
+		],
+		"modmenu": ["ml.mypals.ShaderExit.compat.ModMenuIntegration"]
 	},
 	"mixins": [
 		"ShaderExit.mixins.json"
@@ -23,6 +24,7 @@
 		"emergency_exit": "*"
 	},
 	"suggests": {
-		"iris": "*"
+		"iris": "*",
+		"modmenu": "*"
 	}
 }

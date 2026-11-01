@@ -3,10 +3,16 @@
   "package": "ml.mypals.ShaderExit.mixin",
   "compatibilityLevel": "${java}",
   "client": [
+    "MasaGadgetRenderersMixin",
+    "MasaGadgetRenderUtilMixin",
+    "MagicLibImmediateTextDrawerMixin",
     "RenderEventHandlerMixin",
     "TweakerMoreRenderEventsMixin",
     "CUIListenerWorldRenderMixin",
-    "VanillaDebugRenderersMixin"
+    "VanillaDebugRenderersMixin",
+    "CarpetShapesRendererMixin",
+    "CarpetSpriteRendererMixin",
+    "CarpetTextRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

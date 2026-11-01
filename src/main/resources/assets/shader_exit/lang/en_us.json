@@ -1,0 +1,23 @@
+{
+  "shader_exit.screen.title": "ShaderExit · Shader Bypass",
+  "shader_exit.screen.subtitle": "Choose which mods bypass the shader pack",
+  "shader_exit.screen.enabled": "Bypass: ON",
+  "shader_exit.screen.disabled": "Bypass: OFF",
+  "shader_exit.screen.installed": "Installed",
+  "shader_exit.screen.not_installed": "Not installed",
+  "shader_exit.screen.toggle_hint": "ON renders these overlays without shader pack effects. OFF restores the mod's original rendering. Changes apply and save immediately.",
+  "shader_exit.screen.saved_hint": "Changes apply immediately and are saved automatically.",
+  "shader_exit.screen.save_failed": "Could not save settings. Check the log; the change was not applied.",
+  "shader_exit.screen.previous": "Previous page",
+  "shader_exit.screen.next": "Next page",
+  "shader_exit.screen.page": "Page %s / %s · Scroll to change page",
+  "shader_exit.mod.minihud": "Shapes, boundaries and other world overlays drawn through MaLiLib. Does not affect the HUD text.",
+  "shader_exit.mod.tweakeroo": "World overlays drawn through MaLiLib, such as placement guides. Does not affect the mod's other features.",
+  "shader_exit.mod.litematica": "Selection boxes and other world overlays drawn through MaLiLib. Does not affect schematic blocks.",
+  "shader_exit.mod.tweakermore": "World overlays drawn by TweakerMore. Does not affect its other tweaks.",
+  "shader_exit.mod.masa_gadget_mod": "Villager home/job-site tracers and floating entity information, such as restock and conversion timers. Supported through Minecraft 26.2.",
+  "shader_exit.mod.worldeditcui": "WorldEdit selection outlines and grids.",
+  "shader_exit.mod.malilib": "Other world overlays drawn through MaLiLib. Mods listed separately follow their own switches.",
+  "shader_exit.mod.minecraft": "Vanilla debug shapes and gizmos, such as chunk borders. Does not affect normal world rendering.",
+  "shader_exit.mod.carpet": "Carpet's scarpet shapes and Carpet TIS Addition's micro-timing markers. Both use Carpet's renderer and share this switch."
+}

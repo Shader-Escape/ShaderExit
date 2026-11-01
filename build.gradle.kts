@@ -1,6 +1,41 @@
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
+import org.gradle.api.artifacts.transform.CacheableTransform
+import org.gradle.api.artifacts.transform.InputArtifact
+import org.gradle.api.artifacts.transform.TransformAction
+import org.gradle.api.artifacts.transform.TransformOutputs
+import org.gradle.api.artifacts.transform.TransformParameters
+import org.gradle.api.artifacts.type.ArtifactTypeDefinition
+import org.gradle.api.file.FileSystemLocation
+import org.gradle.api.provider.Provider
+import org.gradle.api.tasks.Classpath
+import java.util.zip.ZipFile
+
+/** Loom's remapped development classpath needs nested runtime libraries as separate jars. */
+@CacheableTransform
+abstract class ExtractBundledRuntime : TransformAction<TransformParameters.None> {
+    @get:InputArtifact
+    @get:Classpath
+    abstract val bundle: Provider<FileSystemLocation>
+
+    override fun transform(outputs: TransformOutputs) {
+        ZipFile(bundle.get().asFile).use { archive ->
+            archive.entries().asSequence().filter {
+                it.name.startsWith("META-INF/jars/") && it.name.endsWith(".jar") &&
+                    listOf("worldeditcui-protocol-", "conditional-mixin-", "antlr4-runtime-", "glsl-transformer-", "jcpp-")
+                        .any { prefix -> it.name.substringAfterLast('/').startsWith(prefix) }
+            }.forEach { entry ->
+                archive.getInputStream(entry).use { input ->
+                    outputs.file(entry.name.substringAfterLast('/')).outputStream().use { input.copyTo(it) }
+                }
+            }
+        }
+    }
+}
 
 val obfuscated = stonecutter.eval(stonecutter.current.version, "<=1.21.11")
+val masaGadgetSupported = stonecutter.eval(stonecutter.current.version, "<=26.2")
+val masaGadgetLineFix = stonecutter.eval(stonecutter.current.version, ">=1.21.11 <=26.2")
+val magicLibTextBatch = stonecutter.eval(stonecutter.current.version, "=26.2")
 
 apply(plugin = if (obfuscated) "net.fabricmc.fabric-loom-remap" else "net.fabricmc.fabric-loom")
 apply(plugin = "maven-publish")
@@ -25,6 +60,8 @@ repositories {
     }
 }
 
+// EXIT: always the newest release for this Minecraft version. JitPack lists the versions of every Minecraft version
+// under one artifact, so the others are rejected before + picks the newest. A pinned branch snapshot is let through.
 configurations.configureEach {
     resolutionStrategy {
         componentSelection.all {
@@ -49,14 +86,35 @@ dependencies {
     mod("implementation")("com.github.Shader-Escape.emergency-exit:emergency_exit-fabric:${property("deps.exit")}")
 
     mod("implementation")("maven.modrinth:malilib:${property("deps.malilib")}")
-    mod("implementation")("maven.modrinth:tweakeroo:${property("deps.tweakeroo")}")
-    mod("implementation")("maven.modrinth:tweakermore:${property("deps.tweakermore")}")
+    mod("compileOnly")("maven.modrinth:tweakermore:${property("deps.tweakermore")}")
+    mod("compileOnly")("maven.modrinth:modmenu:${property("deps.modmenu")}")
+    mod("localRuntime")("maven.modrinth:modmenu:${property("deps.modmenu")}")
+    mod("compileOnly")("maven.modrinth:carpet:${property("deps.carpet")}")
+    mod("localRuntime")("maven.modrinth:carpet:${property("deps.carpet")}")
+    mod("localRuntime")("maven.modrinth:carpet-tis-addition:${property("deps.carpet_tis_addition")}")
     mod("implementation")("maven.modrinth:minihud:${property("deps.minihud")}")
     mod("implementation")("maven.modrinth:worldedit-cui:${property("deps.worldeditcui")}")
 
     mod("implementation")("maven.modrinth:sodium:${property("deps.sodium")}")
     mod("implementation")("maven.modrinth:iris:${property("deps.iris")}")
 
+}
+if (obfuscated) {
+    val runtimeBundles = configurations.create("bundledRuntime") {
+        isCanBeConsumed = false
+        isTransitive = false
+    }
+    dependencies.add(runtimeBundles.name, "maven.modrinth:worldedit-cui:${property("deps.worldeditcui")}")
+    dependencies.add(runtimeBundles.name, "maven.modrinth:carpet-tis-addition:${property("deps.carpet_tis_addition")}")
+    dependencies.add(runtimeBundles.name, "maven.modrinth:iris:${property("deps.iris")}")
+    dependencies.registerTransform(ExtractBundledRuntime::class) {
+        from.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, "jar")
+        to.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, "bundled-runtime-jars")
+    }
+    val bundledLibraries = runtimeBundles.incoming.artifactView {
+        attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, "bundled-runtime-jars")
+    }.files
+    dependencies.add(mod("localRuntime"), bundledLibraries)
 }
 loom.runConfigs.configureEach {
     runDirectory = rootProject.layout.projectDirectory.dir("run/${stonecutter.current.version}")
@@ -86,7 +144,18 @@ tasks {
 
         val mixinJava = "JAVA_${requiredJava.majorVersion}"
         inputs.property("mixinJava", mixinJava)
+        val excludedMixins = buildList {
+            if (!masaGadgetSupported) add("\"MasaGadgetRenderersMixin\"")
+            if (!masaGadgetLineFix) add("\"MasaGadgetRenderUtilMixin\"")
+            if (!magicLibTextBatch) add("\"MagicLibImmediateTextDrawerMixin\"")
+        }
+        inputs.property("excludedMixins", excludedMixins)
         filesMatching("*.mixins.json") { expand("java" to mixinJava) }
+        filesMatching("ShaderExit.mixins.json") {
+            filter { line: String ->
+                if (excludedMixins.any { line.contains(it) }) "" else line
+            }
+        }
     }
 
     named<Jar>("jar") {
